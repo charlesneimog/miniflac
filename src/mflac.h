@@ -45,10 +45,6 @@ void
 mflac_init(mflac_t* m, MINIFLAC_CONTAINER container, mflac_readcb read, void* userdata);
 
 MINIFLAC_API
-void
-mflac_reset(mflac_t* m, MINIFLAC_STATE state);
-
-MINIFLAC_API
 MFLAC_RESULT
 mflac_sync(mflac_t* m);
 
@@ -58,14 +54,6 @@ mflac_decode(mflac_t* m, int32_t** samples);
 
 /* functions to query the state without inspecting structs,
  * only valid to call after mflac_sync returns MFLAC_OK */
-
-MINIFLAC_API
-uint8_t
-mflac_is_native(mflac_t* m);
-
-MINIFLAC_API
-uint8_t
-mflac_is_ogg(mflac_t* m);
 
 MINIFLAC_API
 uint8_t
@@ -110,22 +98,6 @@ mflac_metadata_is_cuesheet(mflac_t* m);
 MINIFLAC_API
 uint8_t
 mflac_metadata_is_picture(mflac_t* m);
-
-MINIFLAC_API
-int32_t
-mflac_ogg_serial(mflac_t* m);
-
-MINIFLAC_API
-uint32_t
-mflac_frame_header_size(mflac_t* m);
-
-MINIFLAC_API
-uint64_t
-mflac_bytes_read_flac(mflac_t* m);
-
-MINIFLAC_API
-uint64_t
-mflac_bytes_read_ogg(mflac_t* m);
 
 /*
  * METADATA FUNCTIONS

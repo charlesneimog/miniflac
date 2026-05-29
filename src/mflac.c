@@ -52,14 +52,6 @@ mflac_init(mflac_t* m, MINIFLAC_CONTAINER container, mflac_readcb read, void *us
     m->buflen = 0;
 }
 
-MINIFLAC_API
-void
-mflac_reset(mflac_t* m, MINIFLAC_STATE state) {
-    miniflac_reset(&m->flac, state);
-    m->bufpos = 0;
-    m->buflen = 0;
-}
-
 MFLAC_GET0_FUNC(sync)
 
 MFLAC_GET1_FUNC(decode,int32_t**)
@@ -119,18 +111,6 @@ MFLAC_GET1_FUNC(picture_colordepth, uint32_t*)
 MFLAC_GET1_FUNC(picture_totalcolors, uint32_t*)
 MFLAC_GET1_FUNC(picture_length, uint32_t*)
 MFLAC_GET3_FUNC(picture_data, uint8_t*)
-
-MINIFLAC_API
-uint8_t
-mflac_is_native(mflac_t* m) {
-    return m->flac.container == MINIFLAC_CONTAINER_NATIVE;
-}
-
-MINIFLAC_API
-uint8_t
-mflac_is_ogg(mflac_t* m) {
-    return m->flac.container == MINIFLAC_CONTAINER_OGG;
-}
 
 MINIFLAC_API
 uint8_t
@@ -244,30 +224,6 @@ MINIFLAC_API
 uint32_t
 mflac_frame_frame_number(mflac_t* m) {
     return m->flac.frame.header.frame_number;
-}
-
-MINIFLAC_API
-uint32_t
-mflac_frame_header_size(mflac_t* m) {
-    return m->flac.frame.header.size;
-}
-
-MINIFLAC_API
-int32_t
-mflac_ogg_serial(mflac_t* m) {
-    return m->flac.oggserial;
-}
-
-MINIFLAC_API
-uint64_t
-mflac_bytes_read_flac(mflac_t* m) {
-    return m->flac.bytes_read_flac;
-}
-
-MINIFLAC_API
-uint64_t
-mflac_bytes_read_ogg(mflac_t* m) {
-    return m->flac.bytes_read_ogg;
 }
 
 MINIFLAC_API
